@@ -1,0 +1,76 @@
+#include <stdio.h>
+#include <math.h>
+
+int IsTheNumber ( const int N );
+
+int main()
+{
+    int n1, n2, i, cnt;
+
+    scanf("%d %d", &n1, &n2);
+    cnt = 0;
+    for ( i=n1; i<=n2; i++ ) {
+        if ( IsTheNumber(i) )
+            cnt++;
+    }
+    printf("cnt = %d\n", cnt);
+
+    return 0;
+}
+
+int IsTheNumber ( const int N ){
+    int m,n;
+    int i=0;
+    int num[10];//记录0-9出现的次数
+    for(i=0; i<10; i++){
+        num[i] = 0;
+    }
+    n = N;
+    m = (int)sqrt(N);
+    if(m*m == n){
+        while(n>0){
+            switch(n % 10){
+                case 0:
+                    num[0]++;
+                    break;
+                case 1:
+                    num[1]++;
+                    break;
+                case 2:
+                    num[2]++;
+                    break;
+                case 3:
+                    num[3]++;
+                    break;
+                case 4:
+                    num[4]++;
+                    break;
+                case 5:
+                    num[5]++;
+                    break;
+                case 6:
+                    num[6]++;
+                    break;
+                case 7:
+                    num[7]++;
+                    break;
+                case 8:
+                    num[8]++;
+                    break;
+                case 9:
+                    num[9]++;
+                    break;
+                default:
+                    break;
+            }
+            n = n/10;
+        }
+        for(i=0; i<10; i++){
+            if(num[i] >= 2){
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
+
